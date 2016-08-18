@@ -40,6 +40,13 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\FTELLC.Agility.Foundation\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\FTELLC.Agility.Foundation\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="TechTalk.SpecFlow, Version=2.1.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
       <HintPath>..\packages\SpecFlow.2.1.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
       <Private>True</Private>
@@ -61,12 +68,19 @@
     <Compile Include="..\..\..\..\..\..\..\DEV\Imaginex.TenString.Tests\Imaginex.TenString.Tests\TenSubstringSteps.cs">
       <Link>TenSubstringSteps.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\..\..\..\..\DEV\Imaginex.TenString.Tests\ImagineX.TenString\WebApiSteps.cs">
+      <Link>WebApiSteps.cs</Link>
+    </Compile>
     <Compile Include="Features\TenString.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TenString.feature</DependentUpon>
     </Compile>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Features\WebApi.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebApi.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,13 +89,24 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>TenString.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\WebApi.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WebApi.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImagineX.TenSubstring.MVC\ImagineX.TenSubstring.MVC.csproj">
+      <Project>{af7223b1-b63d-4e70-88f4-387bbab761de}</Project>
+      <Name>ImagineX.TenSubstring.MVC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImagineX.TenSubstring\ImagineX.TenSubstring.csproj">
       <Project>{fdd56a57-58a4-4f4f-95f7-77f9701e1b94}</Project>
       <Name>ImagineX.TenSubstring</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
