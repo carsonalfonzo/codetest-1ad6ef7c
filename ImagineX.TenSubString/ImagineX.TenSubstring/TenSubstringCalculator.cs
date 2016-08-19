@@ -18,19 +18,15 @@ namespace ImagineX.TenSubstring
         public List<int> Generate()
         {
             List<int> results = new List<int>();
-            long sum = 0;   // summation variable           
-            int length = 0; // length of the current number
-            int parsed = 0; // out value for TryParse 
-            string number = string.Empty; // current number in string form
-
-            for (int i = 0; i < InputNumber + 1; i++) // count up to the number provided 1, 2, 3, 4
+            
+            Parallel.For(0, InputNumber - 1, i =>
             {
-                /* THIS IS A CRUDE IMPLEMENTATION */
+                long sum = 0;
+                int length = GetLength(i); // get the length of the current number
+                int parsed = 0; // out value for TryParse 
+                string number = i.ToString(); // we need the string representation so we add the individual digits 
 
-                length = GetLength(i); // get the length of the current number
-                number = i.ToString(); // we need the string representation so we add the individual digits 
-
-                for(int index = 0; index < length; index++) // loop over all the digits
+                for (int index = 0; index < length; index++) // loop over all the digits
                 {
                     if (int.TryParse(number[index].ToString(), out parsed)) // if the digit can be parsed to an int add it to the sum variable
                     {
@@ -46,8 +42,9 @@ namespace ImagineX.TenSubstring
                 length = 0;
                 sum = 0;
 
-            }
-
+            });
+            
+            results.Sort();
             return results;
         }
 

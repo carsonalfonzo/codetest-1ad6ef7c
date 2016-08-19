@@ -5,7 +5,8 @@ $(document).ready(function () {
 
     $('#buttonGenerator').click(function () {
         $("#outputSection").empty();
-        var number = "<b>The 10-Substring</b>";
+        $("#outputSection").append('<span class="help-block" id="infoPanel">Generating Substrings</span>');
+        var number = "<b>Results:</b>";
         var uri = 'api/TenSubstringGenerator/GetNumbers/' + $('#inputNumber').val();
         // Send an AJAX request
         $.ajax({
@@ -18,7 +19,7 @@ $(document).ready(function () {
                 $(data).find('ArrayOfint int').each(function () {
                     number = number + ' ' + $(this).text();
                 });
-
+                $("#outputSection").empty();
                 $("#outputSection").append(number);
             },
             error: function (x, y, z) {
